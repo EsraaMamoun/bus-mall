@@ -24,7 +24,7 @@ for (var i = 0; i < productsImg.length; i++) {
 var leftProduct, centerProduct, rightProduct
 function render () {
     leftProduct = Product.all[randomNumber(0,Product.all.length-1)];
-    centertProduct = Product.all[randomNumber(0,Product.all.length-1)];
+    centerProduct = Product.all[randomNumber(0,Product.all.length-1)];
     rightProduct = Product.all[randomNumber(0,Product.all.length-1)];
     leftProductImg.setAttribute('src',leftProduct.pathOfImage);
     leftProductImg.setAttribute('alt',leftProduct.productName);
@@ -38,5 +38,40 @@ function render () {
 }
 render ();
 
-sectionProductsImg.addEventListener('click',handleClickOnProduct);
+sectionProductsImg.addEventListener('click',clickOnProduct);
 
+var totalClicks =0;
+function clickOnProduct(event){
+    if(totalClicks < 25){
+        if(event.target.id !== 'sectionProductsImg'){
+            if(event.target.id === 'leftProductImg'){
+                leftProduct.clicks++;
+            }else if(event.target.id === 'centerProductImg'){
+                centerProduct.clicks++;
+            }else if(event.target.id === 'rightProductImg'){
+                rightProduct.clicks++;
+            }
+            totalClicks++;
+            leftProduct.views++;
+            centerProduct.views++;
+            rightProduct.views++;
+            render();
+        }
+    }else{
+        sectionProductsImg.removeEventListener('click',clickOnProduct);
+        Render();
+    }
+}
+
+function Render(){
+    var ulE0 = document.getElementById('synopsis');
+    for (var i=0; i<Product.all.length; i++){
+        var liE1 = document.createElement('li');
+        ulE0.appendChild(liE1);
+        liE1.textContent = `${Product.all[i].productName} has ${Product.all[i].clicks} clicks and ${Product.all[i].views} views`;
+    }
+}
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
