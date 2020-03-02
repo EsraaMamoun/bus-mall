@@ -85,19 +85,17 @@ function Render() {
     }
     var productsImgName = [];
     var clicksProduct = [];
+    var viewArry = [];
 
     for (var i = 0; i < productsImg.length; i++) {
         var Names = productsImg[i].split('.')[0];
         productsImgName.push(Names);
         var clicks2 = Product.all[i].clicks;
         clicksProduct.push(clicks2);
+        var view2 = Product.all[i].views;
+        viewArry.push(view2);
     }
 
-    var viewArry = [];
-for (let i = 0; i < productsImg.length; i++) {
-    var view2 = Product.all[i].views;
-    viewArry.push(view2);
-}
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
