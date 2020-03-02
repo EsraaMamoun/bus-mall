@@ -33,7 +33,7 @@ function render() {
     centerProduct = Product.all[randomNumber(0, Product.all.length - 1)];
     rightProduct = Product.all[randomNumber(0, Product.all.length - 1)];
 
-    while (leftProduct === centerProduct|| leftProduct === rightProduct|| centerProduct === rightProduct) {
+    while (leftProduct === centerProduct || leftProduct === rightProduct || centerProduct === rightProduct) {
         render();
     }
 
