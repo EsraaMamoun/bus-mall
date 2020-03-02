@@ -91,8 +91,13 @@ function Render() {
         productsImgName.push(Names);
         var clicks2 = Product.all[i].clicks;
         clicksProduct.push(clicks2);
-
     }
+
+    var viewArry = [];
+for (let i = 0; i < productsImg.length; i++) {
+    var view2 = Product.all[i].views;
+    viewArry.push(view2);
+}
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -102,12 +107,21 @@ function Render() {
             datasets: [{
                 label: '# of Clicks',
                 data: clicksProduct,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                backgroundColor: 'rgba(255, 99, 132, 1)',
+
+                borderColor: 'black',
+
+
+                borderWidth: 4
+            },{
+                label: '# of Views',
+                data: viewArry,
+                backgroundColor: 'black',
 
                 borderColor: 'rgba(255, 99, 132, 1)',
 
 
-                borderWidth: 1
+                borderWidth: 3
             }]
         },
         options: {
@@ -121,3 +135,4 @@ function Render() {
         }
     });
 }
+
