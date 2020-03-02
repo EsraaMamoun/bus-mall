@@ -85,7 +85,7 @@ function Render() {
     }
     var productsImgName = [];
     var clicksProduct = [];
-    
+
     for (var i = 0; i < productsImg.length; i++) {
         var Names = productsImg[i].split('.')[0];
         productsImgName.push(Names);
@@ -100,7 +100,7 @@ function Render() {
         data: {
             labels: productsImgName,
             datasets: [{
-                label: '# of Votes',
+                label: '# of Clicks',
                 data: clicksProduct,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
 
