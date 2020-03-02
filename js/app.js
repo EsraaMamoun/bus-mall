@@ -28,9 +28,15 @@ function randomNumber(min, max) {
 
 var leftProduct, centerProduct, rightProduct
 function render() {
+
     leftProduct = Product.all[randomNumber(0, Product.all.length - 1)];
     centerProduct = Product.all[randomNumber(0, Product.all.length - 1)];
     rightProduct = Product.all[randomNumber(0, Product.all.length - 1)];
+
+    while (leftProduct === centerProduct|| leftProduct === rightProduct|| centerProduct === rightProduct) {
+        render();
+    }
+
     leftProductImg.setAttribute('src', leftProduct.pathOfImage);
     leftProductImg.setAttribute('alt', leftProduct.productName);
     leftProductImg.setAttribute('title', leftProduct.productName);
@@ -77,6 +83,3 @@ function Render() {
         liE1.textContent = `${Product.all[i].productName.split('.')[0]} has ${Product.all[i].clicks} clicks and ${Product.all[i].views} views`;
     }
 }
-
-// while (leftProduct.pathOfImage === centerProduct.pathOfImage || leftProduct.pathOfImage === rightProduct.productName || centerProduct.pathOfImage === rightProduct.productName) {    
-// }
