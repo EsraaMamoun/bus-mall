@@ -77,3 +77,6 @@ function Render() {
         liE1.textContent = `${Product.all[i].productName.split('.')[0]} has ${Product.all[i].clicks} clicks and ${Product.all[i].views} views`;
     }
 }
+
+// while (leftProduct.pathOfImage === centerProduct.pathOfImage || leftProduct.pathOfImage === rightProduct.productName || centerProduct.pathOfImage === rightProduct.productName) {    
+// }
