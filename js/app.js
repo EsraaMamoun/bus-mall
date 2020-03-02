@@ -2,6 +2,7 @@
 
 var productsImg = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 
+
 var leftProductImg = document.querySelector('#leftProductImg');
 var centerProductImg = document.querySelector('#centerProductImg');
 var rightProductImg = document.querySelector('#rightProductImg');
@@ -33,7 +34,7 @@ function render() {
     centerProduct = Product.all[randomNumber(0, Product.all.length - 1)];
     rightProduct = Product.all[randomNumber(0, Product.all.length - 1)];
 
-    while (leftProduct === centerProduct|| leftProduct === rightProduct|| centerProduct === rightProduct) {
+    while (leftProduct === centerProduct || leftProduct === rightProduct || centerProduct === rightProduct) {
         render();
     }
 
@@ -82,4 +83,56 @@ function Render() {
         ulE0.appendChild(liE1);
         liE1.textContent = `${Product.all[i].productName.split('.')[0]} has ${Product.all[i].clicks} clicks and ${Product.all[i].views} views`;
     }
+    var productsImgName = [];
+    var clicksProduct = [];
+
+    for (var i = 0; i < productsImg.length; i++) {
+        var Names = productsImg[i].split('.')[0];
+        productsImgName.push(Names);
+        var clicks2 = Product.all[i].clicks;
+        clicksProduct.push(clicks2);
+    }
+
+    var viewArry = [];
+for (let i = 0; i < productsImg.length; i++) {
+    var view2 = Product.all[i].views;
+    viewArry.push(view2);
 }
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: productsImgName,
+            datasets: [{
+                label: '# of Clicks',
+                data: clicksProduct,
+                backgroundColor: 'rgba(255, 99, 132, 1)',
+
+                borderColor: 'black',
+
+
+                borderWidth: 4
+            },{
+                label: '# of Views',
+                data: viewArry,
+                backgroundColor: 'black',
+
+                borderColor: 'rgba(255, 99, 132, 1)',
+
+
+                borderWidth: 3
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
