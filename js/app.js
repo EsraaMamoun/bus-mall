@@ -35,7 +35,9 @@ function render() {
     rightProduct = Product.all[randomNumber(0, Product.all.length - 1)];
 
     while (leftProduct === centerProduct || leftProduct === rightProduct || centerProduct === rightProduct || uniqueViews.includes(leftProduct.pathOfImage) || uniqueViews.includes(centerProduct.pathOfImage) || uniqueViews.includes(rightProduct.pathOfImage)) {
-        render();
+        leftProduct = Product.all[randomNumber(0, Product.all.length - 1)];
+        centerProduct = Product.all[randomNumber(0, Product.all.length - 1)];
+        rightProduct = Product.all[randomNumber(0, Product.all.length - 1)];
     }
 
     leftProductImg.setAttribute('src', leftProduct.pathOfImage);
@@ -50,7 +52,7 @@ function render() {
     rightProductImg.setAttribute('alt', rightProduct.productName);
     rightProductImg.setAttribute('title', rightProduct.productName);
 
-    uniqueViews = [leftProduct.pathOfImage,centerProduct.pathOfImage,rightProduct.pathOfImage];
+    uniqueViews = [leftProduct.pathOfImage, centerProduct.pathOfImage, rightProduct.pathOfImage];
 }
 
 render();
@@ -115,7 +117,7 @@ function Render() {
 
 
                 borderWidth: 4
-            },{
+            }, {
                 label: '# of Views',
                 data: viewArry,
                 backgroundColor: 'black',
