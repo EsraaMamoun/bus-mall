@@ -74,10 +74,12 @@ function clickOnProduct(event) {
             leftProduct.views++;
             centerProduct.views++;
             rightProduct.views++;
+            // updateProducts();
             render();
         }
     } else {
         sectionProductsImg.removeEventListener('click', clickOnProduct);
+        updateProducts();
         Render();
     }
 }
@@ -140,3 +142,16 @@ function Render() {
     });
 }
 
+function updateProducts(){
+    var stringProduct = JSON.stringify(Product.all);
+    localStorage.setItem('resultProducts', stringProduct);
+}
+
+function getProduct(){
+    var stringProduct = localStorage.getItem('resultProducts');
+    if(stringProduct){
+        Product.all = JSON.parse(stringProduct);
+        Render();
+    }
+}
+getProduct();
