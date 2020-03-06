@@ -74,7 +74,6 @@ function clickOnProduct(event) {
             leftProduct.views++;
             centerProduct.views++;
             rightProduct.views++;
-            // updateProducts();
             render();
         }
     } else {
@@ -113,18 +112,18 @@ function Render() {
             datasets: [{
                 label: '# of Clicks',
                 data: clicksProduct,
-                backgroundColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: '#A67360',
 
-                borderColor: 'black',
+                borderColor: '#112A40',
 
 
                 borderWidth: 4
             }, {
                 label: '# of Views',
                 data: viewArry,
-                backgroundColor: 'black',
+                backgroundColor: '#112A40',
 
-                borderColor: 'rgba(255, 99, 132, 1)',
+                borderColor: '#A67360',
 
 
                 borderWidth: 3
